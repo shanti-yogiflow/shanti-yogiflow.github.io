@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>YogiFlow Sequence</title>
+<meta property="og:title" content="YogiFlow Sequence">
+<meta property="og:description" content="A yoga sequence shared from YogiFlow. Tap to open it in the app.">
+<meta property="og:image" content="https://shanti-yogiflow.github.io/icon.png">
+<meta property="og:site_name" content="YogiFlow">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<style>
+  :root { --sage: #8EAF9D; --deep: #4F7563; --mist: #E4EEE8; --ink: #1F2A25; --cream: #FFFAF2; }
+  * { box-sizing: border-box; }
+  body { margin: 0; min-height: 100vh; font: 17px/1.45 -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+         color: var(--ink); background: linear-gradient(180deg, var(--mist), var(--cream));
+         display: flex; align-items: center; justify-content: center;
+         padding: max(24px, env(safe-area-inset-top)) 20px max(24px, env(safe-area-inset-bottom)); }
+  main { width: 100%; max-width: 420px; text-align: center; }
+  img { width: 112px; height: 112px; border-radius: 25px; box-shadow: 0 8px 24px rgba(79,117,99,.25); }
+  .kicker { margin: 22px 0 4px; color: var(--deep); font-weight: 600; font-size: 15px; letter-spacing: .02em; }
+  h1 { margin: 0 0 6px; font-size: 28px; line-height: 1.2; overflow-wrap: anywhere; }
+  .count { margin: 0 0 28px; color: #5f6b65; }
+  a.button { display: block; padding: 15px; border-radius: 14px; background: var(--deep); color: #fff;
+             text-decoration: none; font-weight: 600; }
+  .help { margin-top: 28px; padding: 16px; border-radius: 14px; background: rgba(255,255,255,.7);
+          color: #46524c; font-size: 15px; text-align: left; }
+  .help p { margin: 0 0 8px; } .help p:last-child { margin: 0; }
+</style>
+</head>
+<body>
+<main>
+  <img src="/icon.png" alt="YogiFlow">
+  <p class="kicker">YogiFlow Sequence</p>
+  <h1 id="name">A shared sequence</h1>
+  <p class="count" id="count"></p>
+  <a class="button" id="open" href="yogiflow://s">Open in YogiFlow</a>
+  <div class="help">
+    <p><strong>Have YogiFlow?</strong> Tap the button above to add this sequence.</p>
+    <p><strong>Don't have it yet?</strong> YogiFlow is in private beta. Ask the person who sent you this link for a TestFlight invite.</p>
+  </div>
+</main>
+<script>
+  // The sequence lives in the link itself (?v=1&n=name&p=001.084…); nothing is stored here.
+  var params = new URLSearchParams(location.search);
+  var name = params.get("n"), poses = (params.get("p") || "").split(".").filter(Boolean);
+  if (name) { document.getElementById("name").textContent = name; document.title = name + " · YogiFlow"; }
+  if (poses.length) document.getElementById("count").textContent = poses.length + (poses.length === 1 ? " pose" : " poses");
+  document.getElementById("open").href = "yogiflow://s" + location.search;
+</script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["KBGMH2969K.com.shanti.yogiflow"],
+        "components": [
+          { "/": "/s/*", "comment": "Shared YogiFlow sequences" },
+          { "/": "/s", "comment": "Shared YogiFlow sequences" }
+        ]
+      }
+    ]
+  }
+}
